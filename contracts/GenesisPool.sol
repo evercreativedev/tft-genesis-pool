@@ -41,7 +41,7 @@ contract GenesisPool is TFTTokenWrapper, Ownable {
         uint256 blockTime = block.timestamp;
         return
             points[account].add(
-                blockTime.sub(lastUpdateTime[account]).mul(1e18).div(86400).mul(
+                blockTime.sub(lastUpdateTime[account]).mul(1e8).div(86400).mul(
                     balanceOf(account).div(1e8)
                 )
             );
