@@ -18,7 +18,7 @@ module.exports = {
         ),
       network_id: 4,
       gas: 3500000,
-      gasPrice: 100000000000,
+      gasPrice: 10000000000,
     },
     ropsten: {
       provider: () =>
@@ -38,10 +38,12 @@ module.exports = {
       provider: () =>
         new HDWalletProvider(
           process.env.MNEMONIC,
-          process.env.MAINNET_PROVIDER
+          process.env.MAINNET_PROVIDER,
+          4,
+          5
         ),
       gas: 3500000,
-      gasPrice: 100000000000,
+      gasPrice: 200000000000,
     },
   },
   mocha: {
@@ -57,7 +59,7 @@ module.exports = {
       settings: {
         optimizer: {
           enabled: true,
-          runs: 9999,
+          runs: 200,
         },
       },
     },

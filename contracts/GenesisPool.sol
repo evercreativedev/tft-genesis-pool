@@ -41,17 +41,20 @@ contract GenesisPool is TFTTokenWrapper, Ownable {
         uint256 blockTime = block.timestamp;
         return
             points[account].add(
-                blockTime.sub(lastUpdateTime[account]).mul(1e8).div(86400).mul(
-                    balanceOf(account).div(1e8)
-                )
+                blockTime
+                    .sub(lastUpdateTime[account])
+                    .mul(1e6)
+                    .div(86400)
+                    .mul(balanceOf(account).div(1e13))
+                    .div(1e4)
             );
     }
 
     // stake visibility is public as overriding TFTTokenWrapper's stake() function
     function stake(uint256 amount) public updateReward(msg.sender) {
         require(
-            amount.add(balanceOf(msg.sender)) <= 1000000000,
-            "Cannot stake more than 10 TFT"
+            amount.add(balanceOf(msg.sender)) <= 1e15,
+            "Cannot stake more than 1e15 LP"
         );
 
         super.stake(amount);

@@ -1,8 +1,8 @@
 var pool = artifacts.require("GenesisPool");
 
-const RINKBY_ERC1155 = "0xDE7298afb98885D68Be70927Dbb5057E5542E201";
-const RINKBY_ERC20 = "0x70973CA69a81b96231C7475D559014c739bA2cf6";
+const MAIN_ERC1155 = "0xDCb02DAcd87e66F6414fbF913A5b0e58f0dD5eA6";
+const MAIN_ERC20 = "0x0cae187828a43c3a8dc5722c5c71ebd7c1ae2987"; // Must be UNIV2
 
 module.exports = function(developer, network, accounts) {
-  developer.deploy(pool, RINKBY_ERC1155, RINKBY_ERC20);
+  developer.deploy(pool, MAIN_ERC1155, MAIN_ERC20);
 };
